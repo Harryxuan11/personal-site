@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小红书 · 标记我的生活</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- 左侧导航栏 -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="12" fill="#FF2442"/><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="22" font-weight="bold" font-family="serif">书</text></svg>
+    </div>
+    <span class="logo-text">小红书</span>
+  </div>
+  <ul class="nav-menu">
+    <li class="nav-item active" data-page="home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+      <span>首页</span>
+    </li>
+    <li class="nav-item" data-page="explore">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span>探索</span>
+    </li>
+    <li class="nav-item" data-page="publish">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+      <span>发布</span>
+    </li>
+    <li class="nav-item" data-page="messages">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <span>消息</span>
+      <span class="badge">3</span>
+    </li>
+    <li class="nav-item" data-page="profile">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>我的</span>
+    </li>
+  </ul>
+  <div class="sidebar-bottom">
+    <button class="login-btn">登录 / 注册</button>
+  </div>
+</nav>
+
+<!-- 主内容区 -->
+<main class="main-content">
+
+  <!-- 首页 Feed -->
+  <section class="page active" id="page-home">
+    <div class="home-header">
+      <div class="search-bar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" placeholder="搜索你感兴趣的内容...">
+        <button class="search-btn">搜索</button>
+      </div>
+      <div class="channel-tabs">
+        <button class="tab-btn active" data-tab="recommend">推荐</button>
+        <button class="tab-btn" data-tab="fashion">穿搭</button>
+        <button class="tab-btn" data-tab="food">美食</button>
+        <button class="tab-btn" data-tab="beauty">彩妆</button>
+        <button class="tab-btn" data-tab="film">影视</button>
+        <button class="tab-btn" data-tab="travel">旅行</button>
+        <button class="tab-btn" data-tab="fitness">健身</button>
+        <button class="tab-btn" data-tab="pet">宠物</button>
+        <button class="tab-btn" data-tab="diy">手工</button>
+      </div>
+    </div>
+    <div class="waterfall-grid" id="waterfall-grid"></div>
+    <div class="load-more-indicator">
+      <div class="spinner"></div>
+      <span>加载更多...</span>
+    </div>
+  </section>
+
+  <!-- 发布页 -->
+  <section class="page" id="page-publish">
+    <div class="publish-container">
+      <div class="publish-step" id="publish-step-1">
+        <h2 class="publish-title">选择发布类型</h2>
+        <div class="publish-type-grid">
+          <div class="publish-type-card" data-type="image">
+            <div class="type-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+            </div>
+            <h3>发图文</h3>
+            <p>分享生活点滴，最多9张图片</p>
+          </div>
+          <div class="publish-type-card" data-type="video">
+            <div class="type-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23,7 16,12 23,17"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+            </div>
+            <h3>发视频</h3>
+            <p>记录精彩瞬间，最长15分钟</p>
+          </div>
+          <div class="publish-type-card" data-type="text">
+            <div class="type-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg>
+            </div>
+            <h3>写文字</h3>
+            <p>用文字表达你的想法</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="publish-step hidden" id="publish-step-image">
+        <div class="publish-header">
+          <button class="back-btn" onclick="showPublishStep(1)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg>
+            返回
+          </button>
+          <h2>发布图文</h2>
+          <button class="draft-btn">存草稿</button>
+        </div>
+        <div class="publish-body">
+          <div class="publish-left">
+            <div class="image-grid" id="image-grid">
+              <div class="image-add-btn" onclick="addImageSlot()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <span>添加图片</span>
+              </div>
+            </div>
+            <p class="image-hint">最多添加9张图片，可拖拽排序</p>
+          </div>
+          <div class="publish-right">
+            <input type="text" class="publish-input" placeholder="填写标题，让更多人看到你的笔记">
+            <textarea class="publish-textarea" placeholder="分享这一刻的想法..."></textarea>
+            <div class="publish-tags">
+              <button class="tag-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg> 添加话题</button>
+              <button class="tag-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> 添加地点</button>
+              <button class="tag-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> @好友</button>
+            </div>
+            <button class="publish-submit-btn">发布笔记</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="publish-step hidden" id="publish-step-video">
+        <div class="publish-header">
+          <button class="back-btn" onclick="showPublishStep(1)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg>
+            返回
+          </button>
+          <h2>发布视频</h2>
+          <button class="draft-btn">存草稿</button>
+        </div>
+        <div class="publish-body">
+          <div class="publish-left">
+            <div class="video-upload-area">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23,7 16,12 23,17"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+              <p>点击上传视频</p>
+              <span>支持 MP4、MOV 格式，最大 500MB</span>
+            </div>
+            <div class="cover-select">
+              <p>选择封面</p>
+              <div class="cover-frames">
+                <div class="cover-frame active"></div>
+                <div class="cover-frame"></div>
+                <div class="cover-frame"></div>
+                <div class="cover-frame"></div>
+              </div>
+            </div>
+          </div>
+          <div class="publish-right">
+            <input type="text" class="publish-input" placeholder="填写标题，让更多人看到你的视频">
+            <textarea class="publish-textarea" placeholder="分享这一刻的想法..."></textarea>
+            <div class="publish-tags">
+              <button class="tag-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg> 添加话题</button>
+              <button class="tag-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> 添加地点</button>
+            </div>
+            <button class="publish-submit-btn">发布视频</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 个人主页 -->
+  <section class="page" id="page-profile">
+    <div class="profile-container">
+      <div class="profile-banner">
+        <div class="profile-banner-bg"></div>
+        <div class="profile-info">
+          <div class="profile-avatar-wrap">
+            <img class="profile-avatar" src="https://i.pravatar.cc/240?img=47" alt="头像">
+          </div>
+          <div class="profile-meta">
+            <h2 class="profile-name">生活美学家 · 小林</h2>
+            <p class="profile-bio">📍 上海 | 热爱生活，记录美好 ✨ 分享穿搭、美食、旅行</p>
+            <div class="profile-stats">
+              <div class="stat-item"><span class="stat-num">128</span><span class="stat-label">关注</span></div>
+              <div class="stat-item"><span class="stat-num">3.2万</span><span class="stat-label">粉丝</span></div>
+              <div class="stat-item"><span class="stat-num">18.6万</span><span class="stat-label">获赞</span></div>
+            </div>
+          </div>
+          <button class="edit-profile-btn">编辑资料</button>
+        </div>
+      </div>
+      <div class="profile-tabs">
+        <button class="profile-tab active" data-ptab="notes">笔记 <span>86</span></button>
+        <button class="profile-tab" data-ptab="collect">收藏 <span>234</span></button>
+        <button class="profile-tab" data-ptab="liked">赞过 <span>1.2k</span></button>
+        <div class="profile-view-toggle">
+          <button class="view-btn active" data-view="grid">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          </button>
+          <button class="view-btn" data-view="list">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="profile-grid" id="profile-grid"></div>
+    </div>
+  </section>
+
+  <!-- 消息页 -->
+  <section class="page" id="page-messages">
+    <div class="messages-container">
+      <div class="messages-header">
+        <h2>消息</h2>
+        <div class="msg-tabs">
+          <button class="msg-tab active" data-msgtab="dm">私信</button>
+          <button class="msg-tab" data-msgtab="notify">评论与@</button>
+        </div>
+      </div>
+      <div class="msg-panel active" id="msg-dm">
+        <div class="dm-list" id="dm-list"></div>
+      </div>
+      <div class="msg-panel" id="msg-notify">
+        <div class="notify-list" id="notify-list"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- 详情弹窗 -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal-container" id="modal-container">
+    <button class="modal-close" onclick="closeModalDirect()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <!-- 左侧媒体区 -->
+    <div class="modal-media">
+      <div class="media-carousel" id="media-carousel">
+        <!-- 图片/视频动态插入 -->
+      </div>
+      <div class="carousel-dots" id="carousel-dots"></div>
+      <button class="carousel-prev" id="carousel-prev" onclick="carouselPrev()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <button class="carousel-next" id="carousel-next" onclick="carouselNext()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg>
+      </button>
+    </div>
+    <!-- 右侧信息区 -->
+    <div class="modal-info">
+      <div class="modal-user">
+        <img class="modal-avatar" id="modal-avatar" src="" alt="">
+        <div class="modal-user-meta">
+          <span class="modal-username" id="modal-username"></span>
+          <span class="modal-time" id="modal-time"></span>
+        </div>
+        <button class="follow-btn">关注</button>
+      </div>
+      <div class="modal-content-area">
+        <h3 class="modal-title" id="modal-title"></h3>
+        <p class="modal-body" id="modal-body"></p>
+        <div class="modal-topics" id="modal-topics"></div>
+      </div>
+      <div class="modal-comments-wrap">
+        <div class="comments-header">
+          <span id="comments-count">评论 0</span>
+        </div>
+        <div class="comments-list" id="comments-list"></div>
+      </div>
+      <div class="modal-actions">
+        <div class="action-btns">
+          <button class="action-btn like-btn" id="modal-like-btn" onclick="toggleLike()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            <span id="modal-like-count">0</span>
+          </button>
+          <button class="action-btn collect-btn" id="modal-collect-btn" onclick="toggleCollect()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <span>收藏</span>
+          </button>
+          <button class="action-btn share-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <span>分享</span>
+          </button>
+        </div>
+        <div class="comment-input-wrap">
+          <input type="text" class="comment-input" placeholder="说点什么..." id="comment-input">
+          <button class="comment-send-btn" onclick="sendComment()">发送</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
